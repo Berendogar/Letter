@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask, render_template, request
-from markupsafe import escape
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "letter-dev-secret")
@@ -19,17 +18,6 @@ EXAMPLES = [
         "note": "Thanks for covering the Thursday screening booth.",
     },
 ]
-
-LAYOUT = """
-<article class="letter">
-  <p class="dear">Dear {{ recipient }},</p>
-  <div class="body">
-NOTE
-  </div>
-  <p class="sign">— {{ sender }}</p>
-</article>
-"""
-
 
 @app.get("/health")
 def health():
@@ -53,20 +41,12 @@ def compose():
             result=None,
             error="Recipient, sender, and a note are required.",
         ), 400
-    source = LAYOUT.replace("NOTE", note)
-    try:
-        rendered = app.jinja_env.from_string(source).render(
-            recipient=escape(recipient),
-            sender=escape(sender),
-        )
-    except Exception:
-        return render_template(
-            "home.html",
-            examples=EXAMPLES,
-            result=None,
-            error="That note could not be laid out.",
-        ), 400
-    return render_template("home.html", examples=EXAMPLES, result=rendered, error=None)
+    return render_template(
+        "home.html",
+        examples=EXAMPLES,
+        result={"recipient": recipient, "sender": sender, "note": note},
+        error=None,
+    )
 
 
 if __name__ == "__main__":

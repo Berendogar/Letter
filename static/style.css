@@ -21,6 +21,7 @@ input, textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--lin
 button { font-family: "Avenir Next", sans-serif; background: var(--seal); color: #fff; border: 0; padding: 8px 14px; width: fit-content; cursor: pointer; }
 .letter { background: #fffaf2; border: 1px solid var(--line); padding: 22px 24px; margin: 14px 0; }
 .dear { margin-top: 0; }
+.letter .body { white-space: pre-wrap; }
 .sign { text-align: right; }
 .section { margin-top: 28px; font-weight: 500; }
 .flash { background: #f0d9c8; padding: 10px 12px; }

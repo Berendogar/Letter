@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: letter-beren-dogar
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true

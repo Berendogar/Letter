@@ -28,7 +28,11 @@
       {% if error %}<p class="flash">{{ error }}</p>{% endif %}
       {% if result %}
         <h2 class="section">Your card</h2>
-        {{ result|safe }}
+        <article class="letter">
+          <p class="dear">Dear {{ result.recipient }},</p>
+          <div class="body"><p>{{ result.note }}</p></div>
+          <p class="sign">— {{ result.sender }}</p>
+        </article>
       {% endif %}
       <h2 class="section">Recent notes</h2>
       {% for item in examples %}

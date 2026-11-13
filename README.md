@@ -1,5 +1,8 @@
 # Letter
 
+Case Study 9, Beren Dogar. The architecture, the bug, and the patch are in
+[SUBMISSION.md](SUBMISSION.md).
+
 Thank-you notes for one club. Type a recipient, your name, and the note. Letter sets it as a card.
 
 Flask and Jinja templates. No database.
